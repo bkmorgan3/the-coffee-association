@@ -6,7 +6,6 @@ exports.signin = async function (req, res, next) {
     let user = await db.User.findOne({
       email: req.body.email
     })
-    console.log("user", user)
     let { id, username, profileImageUrl } = user;
     let isMatch = await user.comparePassword(req.body.password)
     if (isMatch) {
@@ -25,13 +24,13 @@ exports.signin = async function (req, res, next) {
     } else {
       return next({
         status: 400,
-        message: 'Invalid login, ya mom is a bitch and easy ho'
+        message: 'Invalid login credentials.'
       })
     }
   } catch (err) {
     return next({
       status: 400,
-      message: "You're blocked foo, never come back"
+      message: "Something went wrong on sign In"
     })
   }
 }
