@@ -5,6 +5,7 @@ const cors = require("cors");
 const db = require("./models");
 const errorHandler = require("./handlers/errors")
 const authRoutes = require("./routes/auth");
+const cafeRoutes = require("./routes/cafes")
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use("/api/auth", authRoutes)
+app.use("/api/users/:id/cafes", cafeRoutes)
 
 app.use((req, res, next) => {
   let err = new Error("THIS IS FAILING IN THE MAIN FRAME")

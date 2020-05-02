@@ -18,7 +18,11 @@ const userSchema = new mongoose.Schema({
   },
   profileImgUrl: {
     type: String
-  }
+  },
+  cafes: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Cafe"
+  }]
 });
 
 userSchema.pre("save", async function (next) {
