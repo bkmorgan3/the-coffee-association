@@ -7,3 +7,4 @@ mongoose.connect(process.env.DB_URL, (err) => {
 })
 
 module.exports.User = require("./user")
+module.exports.Cafe = require("./cafe")
